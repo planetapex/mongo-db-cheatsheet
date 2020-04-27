@@ -142,6 +142,7 @@ function generateRecords(numberOfRecords) {
     tickGenRecs =   perfy.end('generateRecords');
     console.log(`generateRecords took ${tickGenRecs.time}`);
     perfy.start('DBInserts');
+    console.log('Inserting documents into  Collection...');
     //if many collections => Promise.all(Post.insertMany(postDocs), User.insertMany(userDocs));
     return Promise.all([Post.insertMany(docs), {}]);
 

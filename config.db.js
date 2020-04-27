@@ -1,13 +1,19 @@
 module.exports = 
 {
   mongodb: {
-    user: 'test',
-    password: 's',
+    user: '',
+    password: '',
     host: 'localhost',
     port: '27017',
     db:'blog',
     dbURL:function() {
-      return `mongodb://${this.user}:${this.password}@${this.host}:${this.port}/${this.db}`
+	  var dbString;
+      if(this.user == '') {
+	  dbString = `mongodb://${this.host}:${this.port}/${this.db}`;
+	  } else {
+	   dbString = `mongodb://${this.user}:${this.password}@${this.host}:${this.port}/${this.db}`;  
+	  }		  
+	  return dbString;
     }
   }
 }

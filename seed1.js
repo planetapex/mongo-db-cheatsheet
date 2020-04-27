@@ -12,9 +12,6 @@ var noOfRecs = 10000;
 
 
 
-
-
-
 console.log('Process started...');
 generateRecords(noOfRecs).then(arr => {
     // console.log(data);
@@ -146,7 +143,9 @@ function runMongoDB(arr) {
 
         // var a1 =
         db.once('open', function () {
-              perfy.start('DBInserts');
+
+            perfy.start('DBInserts');
+            console.log('Inserting documents into  Collection...');
             Model.insertMany(arr).then((docs) => {
                tickDbInsert =   perfy.end('DBInserts');
                 console.log(`DBInsert took ${tickDbInsert.time}`);
